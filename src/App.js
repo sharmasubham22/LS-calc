@@ -33,62 +33,74 @@ const gstAmt = (FinalAmt - totalPreGST).toFixed(2);
 
   return (
     <div className="container">
-      <h1 className="my-5">Calculate Price</h1>
-      <div className="mb-3">
-        <label htmlFor="inputAmt" className="form-label">
-          <strong>Enter Price</strong>
+      <h1 className="my-5 text-center">
+        <strong>Calculate</strong>
+      </h1>
+      <div>
+        <div className="mb-3">
+          <label htmlFor="inputAmt" className="form-label">
+            <strong>Enter Price</strong>
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="inputAmt"
+            onChange={(e) => setPrice(e.target.value)}
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <label htmlFor="inputSize" className="form-label">
+          <strong>Select Size</strong>
         </label>
-        <input
-          type="number"
-          className="form-control"
-          id="inputAmt"
-          onChange={(e) => setPrice(e.target.value)}
-          aria-describedby="emailHelp"
-        />
+        <select
+          className="form-select"
+          id="inputSize"
+          key={size}
+          value={size}
+          onChange={handleChange}
+          aria-label="Default select example"
+        >
+          {sizes.map((option) => (
+            <option key={option.id} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       </div>
-      <label htmlFor="inputSize" className="form-label">
-        <strong>Select Size</strong>
-      </label>
-      <select
-        className="form-select"
-        id="inputSize"
-        key={size}
-        value={size}
-        onChange={handleChange}
-        aria-label="Default select example"
-      >
-        {sizes.map((option) => (
-          <option key={option.id} value={option.value}>{option.label}</option>
-        ))}
-      </select>
-      
-      <div className="my-5">
-        <h2 className='my-3'>Total Breakdown</h2>
-        <table className="table" >
+      <div className="my-5 table-responsive">
+        <h2 className="my-3 text-center">
+          <strong>Total Breakdown</strong>
+        </h2>
+        <table className="table table-bordered border-dark">
           <tbody>
             <tr>
-              <th scope="row">Today's Price</th>
+              <th>Price</th>
               <td>₹{price}</td>
             </tr>
             <tr>
-              <th scope="row">Gauge Charges</th>
+              <th >Gauge Charges</th>
               <td>₹{gauge}</td>
             </tr>
             <tr>
-              <th scope="row">Loading Charges</th>
+              <th >Loading Charges</th>
               <td>₹280/-</td>
             </tr>
             <tr>
-              <th scope="row">GST 18%</th>
+              <th>GST 18%</th>
               <td>₹{gstAmt}</td>
             </tr>
-            <tr>
-              <th scope="row">Final Amount</th>
-              <td >₹{FinalAmt}</td>
+            <tr class="table-dark">
+              <th>Final Amount</th>
+              <td>
+                <strong>₹{FinalAmt}</strong>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p>
+        &#169; 2023 <strong>Lakhdatar Steel</strong>
+      </p>
     </div>
   );
 }
