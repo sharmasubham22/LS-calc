@@ -103,7 +103,7 @@ const FinalAmt = totalPreGST+parseFloat(gstAmt)+500;
         </table>
       </div>
       <p>
-        &#169; 2023 <strong>Lakhdatar Steel</strong>
+        &#169; 2024 <strong>Lakhdatar Steel</strong>
       </p>
     </div>
   );
