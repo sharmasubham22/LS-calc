@@ -28,8 +28,8 @@ const handleChange = (e) => {
 }
 
 const totalPreGST = parseInt(price) + parseInt(gauge) + 280;
-const FinalAmt = (totalPreGST*1.18).toFixed(2);
-const gstAmt = (FinalAmt - totalPreGST).toFixed(2);
+const gstAmt = (totalPreGST*18/100).toFixed(2);
+const FinalAmt = totalPreGST+parseFloat(gstAmt)+500;
 
   return (
     <div className="container">
@@ -78,16 +78,20 @@ const gstAmt = (FinalAmt - totalPreGST).toFixed(2);
               <td>₹{price}</td>
             </tr>
             <tr>
-              <th >Gauge Charges</th>
+              <th>Gauge Charges</th>
               <td>₹{gauge}</td>
             </tr>
             <tr>
-              <th >Loading Charges</th>
+              <th>Loading Charges</th>
               <td>₹280/-</td>
             </tr>
             <tr>
               <th>GST 18%</th>
               <td>₹{gstAmt}</td>
+            </tr>
+            <tr>
+              <th>Commision</th>
+              <td>₹500/-</td>
             </tr>
             <tr class="table-dark">
               <th>Final Amount</th>
